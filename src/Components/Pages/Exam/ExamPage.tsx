@@ -88,7 +88,8 @@ const ExamPage = (): React.JSX.Element => {
     >
       <ExamContext.Provider value={{
         ...contextObj,
-        handleSelectedChanged: handleSelectedChanged
+        handleSelectedChanged: handleSelectedChanged,
+        handleAnswer: handleAnswer
       }}>
         <Sider
           width={300}
@@ -96,7 +97,7 @@ const ExamPage = (): React.JSX.Element => {
             background: token["blue-1"],
             padding: 8,
             paddingTop: 0,
-            overflowY: "scroll"
+            overflowY: "auto"
           }}
         >
           <AnswerSheet />
