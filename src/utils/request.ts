@@ -1,6 +1,4 @@
 import axios from "axios";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 const service = axios.create({
   baseURL: "http://localhost:3000",

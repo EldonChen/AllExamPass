@@ -7,6 +7,14 @@ const routers = [
   {
     title: '考场页面',
     href: 'exam?examRoomId=123'
+  },
+  {
+    title: '考试页面',
+    href: 'exam/examPage'
+  },
+  {
+    title: '题型编辑器',
+    href: 'editor/questionType'
   }
 ]
 
@@ -22,16 +30,20 @@ const App = ():React.JSX.Element => {
         dataSource={routers}
         renderItem = {(router) => {
           return (
-            <Link
-              to={router.href}
-              style={{
-                fontSize: '2em',
-                margin: '10px'
-              }}
+            <List.Item
               key={router.href}
             >
-              {router.title}
-            </Link>
+              <Link
+                to={router.href}
+                style={{
+                  fontSize: '2em',
+                  margin: '10px'
+                }}
+              >
+                {router.title}
+              </Link>
+            </List.Item>
+
           )
         }}
         style = {{

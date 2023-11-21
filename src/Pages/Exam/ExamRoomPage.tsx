@@ -4,6 +4,7 @@ import {Button, Flex, Table, Tag} from "antd";
 import {ColumnsType} from "antd/es/table";
 import {ExamPageInfo, ExamRoomRes, QuestionType} from "@/Entries/ExamRoomRes";
 import {parseTime} from "@/utils/date";
+import {useNavigate} from "react-router-dom";
 
 const ExamRoomPage = ():React.JSX.Element => {
   const {
@@ -12,6 +13,12 @@ const ExamRoomPage = ():React.JSX.Element => {
     // @ts-ignore
   } = useSelector(state => state.exam)
 
+  const navigate = useNavigate();
+
+  const handleEntryExam = (examPageId: string) => {
+    console.log(examPageId)
+    navigate(`/exam/examPage?examPageId=${examPageId}`)
+  }
 
 
   let examPageInfos: ExamPageInfo[] = [...examInfos];
@@ -63,8 +70,8 @@ const ExamRoomPage = ():React.JSX.Element => {
     {
       title: '',
       key: 'examPageId',
-      render: (examPageId: string) => (
-        <Button>进入答题</Button>
+      render: ({examPageId}) => (
+        <Button onClick={() => handleEntryExam(examPageId)}>进入答题</Button>
       )
     }
   ]

@@ -3,6 +3,8 @@ import ExamContainer from "@/Pages/ExamContainer";
 import React from 'react';
 import App from "@/Pages/App";
 import ExamRoomPage from "@/Pages/Exam/ExamRoomPage";
+import QuestionTypeEditor from "@/Pages/Editor/QuestionTypeEditor";
+import ExamPage from "@/Pages/Exam/ExamPage";
 
 
 const router = createHashRouter([
@@ -19,8 +21,21 @@ const router = createHashRouter([
     element: <ExamContainer />,
     children: [
       {
-        path: 'examRoom',
+        index: true,
         element: <ExamRoomPage />
+      },
+      {
+        path: 'examPage',
+        element: <ExamPage />
+      }
+    ]
+  },
+  {
+    path: '/editor',
+    children: [
+      {
+        path: 'questionType',
+        element: <QuestionTypeEditor />
       }
     ]
   }

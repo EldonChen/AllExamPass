@@ -37,7 +37,6 @@ const ExamContainer = (): React.JSX.Element => {
         dispatch(setExamRoomDirection(res['direction']));
         // @ts-ignore
         dispatch(setExamInfos(res['examPageInfos']));
-        navigate('/exam/examRoom')
       }
     }).catch((err) => {
       console.log('error')
@@ -63,13 +62,13 @@ const ExamContainer = (): React.JSX.Element => {
       <Content
         style={{
           background: '#fafafa',
-          height: '88vh',
-          padding: '10px',
+          minHeight: '88vh',
           textAlign: 'left'
         }}
       >
         <Outlet/>
       </Content>
+
       <Footer
         style={{
           height: '6vh',
