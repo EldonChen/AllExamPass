@@ -20,7 +20,7 @@ const AnswerSheetBtn = (
   let status = isSelected? "default": question.isAnswered? "primary": "dashed";
 
   let selectedStyle = {
-    fontWeight: "bold",
+    // fontWeight: "bold",
     background: token["blue-6"],
     color: "#fff"
   }
