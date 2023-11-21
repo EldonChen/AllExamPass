@@ -1,18 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {ExamPageInfo, QuestionType} from "@/Entries/ExamRoomRes";
-
-interface Question {
-  questionId: string,
-  index: string | number,
-  questionType: QuestionType,
-  hasChild: boolean,
-  Children?: Question[]
-}
-
-interface ExamQuestions {
-  examId: string,
-  questions: Question[]
-}
+import {ExamPageInfo} from "@/Entries/ExamRoomRes";
 
 const examStore = createSlice({
   name: 'exam',
@@ -41,27 +28,15 @@ const examStore = createSlice({
     ) {
       state.examInfos = action.payload;
     },
-    setExamQuestions(
-      state,
-      action: {
-        payload: ExamQuestions,
-        type: string
-      }
-    ) {
-      // if (!state.questionMap.has(action.payload.examId)) {
-      //   state.questionMap.set(action.payload.examId, action.payload.questions)
-      // }
-    }
   },
 })
 
 const {
   setExamRoomId,
   setExamInfos,
-  setExamQuestions,
   setExamRoomDirection
 } = examStore.actions;
 const examReducer = examStore.reducer;
 
-export { setExamRoomId, setExamRoomDirection, setExamInfos, setExamQuestions }
+export { setExamRoomId, setExamRoomDirection, setExamInfos }
 export default examReducer
