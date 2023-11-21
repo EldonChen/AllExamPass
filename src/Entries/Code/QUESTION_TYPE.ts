@@ -1,0 +1,6 @@
+const enum QUESTION_TYPE{
+  SINGLE_CHOICE,
+  MULTIPLE_CHOICE,
+}
+
+export default  QUESTION_TYPE
