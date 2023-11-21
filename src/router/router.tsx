@@ -1,10 +1,10 @@
 import { createHashRouter } from "react-router-dom";
-import ExamContainer from "@/Pages/ExamContainer";
+import ExamContainer from "@/Components/ExamContainer";
 import React from 'react';
-import App from "@/Pages/App";
-import ExamRoomPage from "@/Pages/Exam/ExamRoomPage";
-import QuestionTypeEditor from "@/Pages/Editor/QuestionTypeEditor";
-import ExamPage from "@/Pages/Exam/ExamPage";
+import App from "@/Components/App";
+import ExamRoomPage from "@/Components/Pages/Exam/ExamRoomPage";
+import QuestionTypeEditor from "@/Components/Pages/Editor/QuestionTypeEditor";
+import ExamPage from "@/Components/Pages/Exam/ExamPage";
 
 
 const router = createHashRouter([
