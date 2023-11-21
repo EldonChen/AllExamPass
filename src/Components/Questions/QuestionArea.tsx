@@ -3,34 +3,52 @@ import {ExamContext} from "@/Context/ExamContext";
 import {ProCard} from "@ant-design/pro-components";
 import request from "@/utils/request";
 import {Tag} from "antd";
+import {useSearchParams} from "react-router-dom";
+import QuestionAreaCard from "@/Components/Questions/QuestionAreaCard";
 
-const QuestionArea = ():React.JSX.Element => {
+const QuestionArea = (): React.JSX.Element => {
   const {selectedQuestion, examQuestions} = useContext(ExamContext);
-  const [content, setContent] = useState(<></>);
+  const [examPageId] = useSearchParams()
+  const [cardContent, setCardContent] = useState(<></>);
+  const [cardQuestionContent, setCardQuestionContent] = useState(<></>);
+  const [directionComponent, setDirectionComponent] = useState(<></>);
   useEffect(() => {
-    if(examQuestions){
+    if (examQuestions) {
       // setContent(examQuestions[selectedQuestion].questionId);
       request({
-        url: '/api/question',
+        url: '/api/questionGroup',
         method: 'get',
         params: {
-          questionId: examQuestions[selectedQuestion].questionId
+          questionGroupId: examQuestions[selectedQuestion].questionId,
+          examPageId: examPageId
         }
       }).then((res) => {
         // @ts-ignore
-        let questionStemText = res["questionContent"];
+        let questionDirection = res["questionGroupDirection"];
+        let questionStemText = "";
         // @ts-ignore
-        let questionType = res["questionTypeName"];
+        if (res["questionGroupStem"]) {
+          // @ts-ignore
+          questionStemText = res["questionGroupStem"];
+        }
         // @ts-ignore
-        let questionPointValue = res["questionPointValue"];
-        let questionStem = (
+        let questionType = res["questionGroupTypeName"];
+        // @ts-ignore
+        let children = res["children"];
+        setCardQuestionContent(<QuestionAreaCard>{children}</QuestionAreaCard>)
+
+        setDirectionComponent((
           <div>
             <Tag>{questionType}</Tag>
-            (本题{questionPointValue}分)<br/>
+            <b>{questionDirection}</b>
+          </div>
+        ))
+        let questionStem = (
+          <div>
             {questionStemText}
           </div>
         )
-        setContent(questionStem)
+        setCardContent(questionStem)
       }).catch((err) => {
 
       })
@@ -38,13 +56,15 @@ const QuestionArea = ():React.JSX.Element => {
   }, [selectedQuestion]);
   return (
     <>
+      {directionComponent}
       <ProCard
         boxShadow
         style={{
           minHeight: "20vh"
         }}
       >
-        {content}
+        {cardContent}
+        {cardQuestionContent}
       </ProCard>
     </>
   )
