@@ -5,6 +5,7 @@ interface IExamContext {
   selectedQuestion: number,
   examQuestions: ExamQuestion[],
   handleSelectedChanged:Function,
+  handleAnswer:Function
 }
 
 export const ExamContext = createContext({} as IExamContext)
