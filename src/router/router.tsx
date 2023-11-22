@@ -1,10 +1,11 @@
 import { createHashRouter } from "react-router-dom";
-import ExamContainer from "@/Components/ExamContainer";
+import ExamContainer from "@/Components/Layout/ExamContainer";
 import React from 'react';
 import App from "@/Components/App";
 import ExamRoomPage from "@/Components/Pages/Exam/ExamRoomPage";
 import QuestionTypeEditor from "@/Components/Pages/Editor/QuestionTypeEditor";
 import ExamPage from "@/Components/Pages/Exam/ExamPage";
+import AdminContainer from "@/Components/Layout/AdminContainer";
 
 
 const router = createHashRouter([
@@ -38,6 +39,10 @@ const router = createHashRouter([
         element: <QuestionTypeEditor />
       }
     ]
+  },
+  {
+    path: '/admin',
+    element: <AdminContainer />
   }
 ])
 

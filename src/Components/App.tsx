@@ -15,6 +15,10 @@ const routers = [
   {
     title: '题型编辑器',
     href: 'editor/questionType'
+  },
+  {
+    title: '管理中台',
+    href: 'admin'
   }
 ]
 
