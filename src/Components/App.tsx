@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {List} from "antd";
-import {useSelector} from "react-redux";
 
 const routers = [
   {

@@ -3,11 +3,11 @@ import {PageContainer, ProCard, ProLayout} from "@ant-design/pro-components";
 import adminRouter from "@/router/adminRouter";
 import type { ProSettings } from '@ant-design/pro-components';
 const AdminContainer = ():React.JSX.Element => {
-  const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
-    fixSiderbar: true,
-    layout: 'mix',
-    splitMenus: false,
-  });
+  // const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
+  //   fixSiderbar: true,
+  //   layout: 'mix',
+  //   splitMenus: false,
+  // });
 
   const [pathname, setPathname] = useState('/welcome');
   const [component, setComponent] = useState(adminRouter.route.component)
@@ -43,7 +43,6 @@ const AdminContainer = ():React.JSX.Element => {
           {dom}
         </div>
       )}
-      {...settings}
     >
       <PageContainer >
         <ProCard
